@@ -1,0 +1,16 @@
+apiVersion: compute.azure.crossplane.io/v1beta1
+kind: AKSCluster
+metadata:
+  name: croosplane_cluster
+spec:
+  forProvider:
+    resourceGroupName: argo-cd-resource-group
+    location: East US
+    agentPoolProfiles:
+      - name: default
+        count: 3
+        vmSize: Standard_B2s
+    dnsPrefix: myaks
+  providerConfigRef:
+    name: azure-provider
+
